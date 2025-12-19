@@ -13,7 +13,7 @@ This is optional but highly recommended. You'll include one interesting insight 
 
 ## Data Sources and Acknowledgements
 
-The data from this project was obtained from the World Bank database (specifically the World Development Indicators database). 
+The data from this project was obtained from the World Bank database (specifically the https://databank.worldbank.org/source/world-development-indicators). 
 
 ## Current Plan
 
