@@ -5,23 +5,46 @@ format: html
 editor: visual
 ---
 
-## Quarto
+## Exploratory Data Analysis
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+#### FAIR and CARE
 
-## Running Code
+#### Table
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+#### Plot
+
+## Author Contribution
+
+Rimjhim Mitra did everything.
+
+## Code Appendix
 
 ```{r}
-1 + 1
+#load libraries
+library(readr)
+library(reshape2)
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+library(plm)
+library(car)
+library(caret)
+library(glmnet)
+library(stargazer)
+
+#read + format data
+data<- read_csv("data3.csv")
+melted_data <- melt(data, id.vars = c("Country Name", "Series Name"), variable.name = "Year", value.name = "Value")
+
+# aggregate duplicate rows
+melted_data_aggregated <- melted_data %>%
+  group_by(`Country Name`, `Series Name`, Year) %>%
+  summarize(Value = mean(Value, na.rm = TRUE))
+
+# wide data
+data_wide <- spread(melted_data_aggregated, key = "Series Name", value = Value)
+data_wide$Country_Name <- as.character(data_wide$`Country Name`)
+
+#view column names
+names(data_wide)
 ```
-
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
