@@ -2,16 +2,35 @@
 title: "STAT 184 Final Project"
 author: "Rimjhim Mitra"
 format: html
+bibliography:
+- references.bib
+csl: '/Users/rimjhimmitra/Desktop/college/PSU Fall 2025 Semester/STAT 184/apa7.csl'
 editor: visual
 ---
+
+## Introduction and Background Research
+
+The primary purpose of this project is to investigate if foreign aid has a statistically significant, positive economic development in developing countries. The significance of this is to see if assistance is genuinely beneficial in the long-term economic development of a country. This is going to be done using multivariate regression models.
+
+## Methodology
+
+The data was obtained from the World Bank Database, specifically the World Development Indicators database. The variables that were used were the country name, year, central government debt, control of corruption, ease of doing business score, educational attainment at least completed lower secondary, GDP per capita growth, general government consumption expenditure, Gini index, infant mortality rate, net official development assistance and aid, political stability and absence of violence, population growth, and poverty gap. The dependent variables were GDP per capita growth, infant mortality rate, and poverty gap. The independent variable is the foreign aid, and the rest of the variables were control variables. The data had high co-linearity, so a fixed effects model could not be used. Instead, three different multivariate regression models were used.
+
+The first model used the GDP per capita growth rate as the dependent variable. The second model used the infant mortality rate as the dependent variable. The third model uses the poverty gap at \$2.15 a day as the dependent variable. The results show that ease of doing business, educational attainment, government expenditure, income inequality, political stability, and population growth have statistically significant coefficients.
 
 ## Exploratory Data Analysis
 
 #### FAIR and CARE
 
-#### Table
+#### Plots
 
-#### Plot
+#### 
+
+#### Regression Table
+
+![Figure X: Regression Table using Stargazer package](images/Screenshot 2025-12-18 at 6.09.25 PM.png){fig-alt="A detailed table showcasing statistical data with variables like GDP growth, mortality rate, and poverty percentage. Columns present coefficients, standard errors, and significance levels denoted by asterisks. The table conveys socioeconomic indicators' relationships, highlighting significance with symbols like *, **, ***." fig-align="center"}
+
+## Results and Conclusion
 
 ## Author Contribution
 
@@ -20,7 +39,9 @@ Rimjhim Mitra did everything.
 ## Code Appendix
 
 ```{r}
+### LOAD AND FORMAT DATA
 #load libraries
+
 library(readr)
 library(reshape2)
 library(dplyr)
@@ -108,4 +129,66 @@ sub_data <- sub_data %>%
   mutate(foreign_aid_lag1 = lag(`Net official development assistance and official aid received (current US$)`, 1),
          foreign_aid_lag2 = lag(`Net official development assistance and official aid received (current US$)`, 2)) %>%
   ungroup()  
+
+### EXPLORATORY DATA ANALYSIS
+ggplot(sub_data, aes(x = sub_data$`Gini index`)) +
+  geom_histogram(fill = "deeppink", color = "black", bins = 5) +
+  labs(title = "Gini Index Histogram", x="Gini Index", y="Count")
+
+### REGRESSION MODELS
+# MODEL 1 (Perform regression analysis with all available variables as controls)
+model1 <- lm(`GDP per capita growth (annual %)` ~ `Net official development assistance and official aid received (current US$)` + 
+               `Central government debt, total (% of GDP)` + 
+               `Control of Corruption: Estimate` + 
+               `Ease of doing business score (0 = lowest performance to 100 = best performance)` + 
+               `Educational attainment, at least completed lower secondary, population 25+, total (%) (cumulative)` + 
+               `General government final consumption expenditure (current US$)` + 
+               `Gini index` + 
+               `Political Stability and Absence of Violence/Terrorism: Estimate` + 
+               `Population growth (annual %)`,
+             data = sub_data)
+
+#MODEL 2
+# View summary of regression results
+summary(model1)
+plot(model1)
+
+model2 <- lm(`Mortality rate, infant (per 1,000 live births)` ~ `Net official development assistance and official aid received (current US$)` + 
+               `Central government debt, total (% of GDP)` + 
+               `Control of Corruption: Estimate` + 
+               `Ease of doing business score (0 = lowest performance to 100 = best performance)` + 
+               `Educational attainment, at least completed lower secondary, population 25+, total (%) (cumulative)` + 
+               `General government final consumption expenditure (current US$)` + 
+               `Gini index` + 
+               `Political Stability and Absence of Violence/Terrorism: Estimate` + 
+               `Population growth (annual %)` + 
+               `Poverty gap at $2.15 a day (2017 PPP) (%)`,
+             data = sub_data)
+
+# View summary of regression results 
+summary(model2)
+plot(model2)
+
+#MODEL 3
+model3 <- lm(`Poverty gap at $2.15 a day (2017 PPP) (%)` ~ `Net official development assistance and official aid received (current US$)` + 
+               `Central government debt, total (% of GDP)` + 
+               `Control of Corruption: Estimate` + 
+               `Ease of doing business score (0 = lowest performance to 100 = best performance)` + 
+               `Educational attainment, at least completed lower secondary, population 25+, total (%) (cumulative)` + 
+               `General government final consumption expenditure (current US$)` + 
+               `Gini index` + 
+               `Political Stability and Absence of Violence/Terrorism: Estimate` + 
+               `Population growth (annual %)`,
+             data = sub_data)
+
+# View summary of regression results
+summary(model3)
+plot(model3)
+
+#Regression table
+stargazer(model1, model2, model3, type = "text")
+
+
 ```
+
+## References
