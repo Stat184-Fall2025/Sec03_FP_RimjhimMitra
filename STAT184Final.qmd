@@ -1,36 +1,74 @@
 ---
 title: "STAT 184 Final Project"
 author: "Rimjhim Mitra"
-format: html
-bibliography:
-- references.bib
-csl: '/Users/rimjhimmitra/Desktop/college/PSU Fall 2025 Semester/STAT 184/apa7.csl'
+format:
+  pdf:
+    code-overflow: wrap
+bibliography: references.bib
+csl: apa7.csl
 editor: visual
 ---
 
-## Introduction and Background Research
+## Introduction and Literature Review
 
-The primary purpose of this project is to investigate if foreign aid has a statistically significant, positive economic development in developing countries. The significance of this is to see if assistance is genuinely beneficial in the long-term economic development of a country. This is going to be done using multivariate regression models.
+The primary purpose of this project is to investigate if foreign aid has a statistically significant, positive economic development in developing countries. The significance of this is to see if assistance is genuinely beneficial in the long-term economic development of a country.
+
+The first article reviewed is about the impact of foreign (health aid) on human development. The article suggested that health aid could be more practical in improving human development. The data analyzed showed that health aid does not significantly enhance human welfare. The paper suggested that health aid should not be used as a policy objective for increasing human welfare, as it is not more effective than general aid in improving human development indicators or economic development (Williamson, 2008).
+
+The second article reviewed focused on the effects of official development assistance (ODA) in Tanzania. This study analyzed the impact of ODS on economic growth and poverty reduction. The study showed that ODA significantly contributed to GDP growth but had a limited effect on poverty reduction. It found that other variables, such as FDIs and a stable political and economic environment, played a crucial role in Tanzania\'s economic development. Even though ODA positively impacted Tanzania's GDP, the paper suggests that Tanzania should seek other methods to increase economic growth and reduce poverty due to reductions in aid (Rotarou & Ueta, 2009).
+
+The third article reviewed was a case study on Pakistan and foreign aid's role in promoting economic growth in Pakistan. The study suggested that the benefits of foreign aid may be temporary. The study results showed that despite heavy reliance on foreign assistance and borrowings to finance economic development, aid in Pakistan was yet to be equitably dispersed, leading to a dependency on external resources (Khan & Ahmed, 2007).
 
 ## Methodology
 
-The data was obtained from the World Bank Database, specifically the World Development Indicators database. The variables that were used were the country name, year, central government debt, control of corruption, ease of doing business score, educational attainment at least completed lower secondary, GDP per capita growth, general government consumption expenditure, Gini index, infant mortality rate, net official development assistance and aid, political stability and absence of violence, population growth, and poverty gap. The dependent variables were GDP per capita growth, infant mortality rate, and poverty gap. The independent variable is the foreign aid, and the rest of the variables were control variables. The data had high co-linearity, so a fixed effects model could not be used. Instead, three different multivariate regression models were used.
-
-The first model used the GDP per capita growth rate as the dependent variable. The second model used the infant mortality rate as the dependent variable. The third model uses the poverty gap at \$2.15 a day as the dependent variable. The results show that ease of doing business, educational attainment, government expenditure, income inequality, political stability, and population growth have statistically significant coefficients.
+The data was obtained from the World Bank Database, specifically the World Development Indicators database. This specific project focused on Sub-Saharan Africa specifically, in order to account for any cultural differences. The variables that were used were the country name, year, central government debt, control of corruption, ease of doing business score, educational attainment at least completed lower secondary, GDP per capita growth, general government consumption expenditure, Gini index (income inequality), infant mortality rate, net official development assistance and aid, political stability and absence of violence, population growth, and poverty gap. The dependent variables were GDP per capita growth, infant mortality rate, and poverty gap. The independent variable is the foreign aid, and the rest of the variables were control variables. The data had high co-linearity, so a fixed effects model could not be used. Instead, three different multivariate regression models were used. The first model used the GDP per capita growth rate as the dependent variable. The second model used the infant mortality rate as the dependent variable. The third model uses the poverty gap as the dependent variable.
 
 ## Exploratory Data Analysis
 
 #### FAIR and CARE
 
+The data followed both FAIR and CARE practices as follows:
+
+-   FAIR:
+    -   Findable: The World Bank Website is easily findable via any search engine.
+    -   Accessible: The data is available for free online and easy to download.
+    -   Interoperable: The data is downloadable in a CSV format, which makes it easy to work with.
+    -   Reusable: The data is reusable since there is metadata, and documentation for each indicator.
+-   CARE:
+    -   Collective Benefit: This data is highly beneficial for everyone as it allows for lots of important data (ex. medical access) to be consolidated in one place.
+    -   Authority to Control: Countries provide data to the World Bank.
+    -   Responsibility: The data is highly filtered and the World Bank is a reputable organization.
+    -   Ethics: The World Bank follow standard practices for social data and is highly reputable.
+
+The exploratory data analysis showed that most of the countries showed a low ease of doing business score, and a low Gini Index (which measures inequality). Overall, this was expected as the most of the countries on this list are not highly developed. As a result, it is expected that it is difficult to do business there, and income inequality would be high.
+
 #### Plots
 
-#### 
+![Figure 1: Ease of Doing Business Score Histogram](images/business-02.png){fig-alt="Histogram showing the \"Ease of Doing Business\" scores. Most scores range between 50 and 80, with a peak at 60. Bars are pink, labeled on axes." fig-align="center"}
+
+![Figure 2: Gini Index Histogram](images/gini-01.png){fig-alt="Histogram of the Gini Index shows distribution with peaks between 30-40 and 40-50 on the x-axis; y-axis counts range from 0 to 400. Bars are vibrant pink." fig-align="center"}
+
+## Results, Conclusion, and Limitations
 
 #### Regression Table
 
-![Figure X: Regression Table using Stargazer package](images/Screenshot 2025-12-18 at 6.09.25 PM.png){fig-alt="A detailed table showcasing statistical data with variables like GDP growth, mortality rate, and poverty percentage. Columns present coefficients, standard errors, and significance levels denoted by asterisks. The table conveys socioeconomic indicators' relationships, highlighting significance with symbols like *, **, ***." fig-align="center"}
+![Figure 3: Regression Table](images/regression.png){fig-alt="A detailed table showcasing statistical data with variables like GDP growth, mortality rate, and poverty percentage. Columns present coefficients, standard errors, and significance levels denoted by asterisks. The table conveys socioeconomic indicators' relationships, highlighting significance with symbols like *, **, ***." fig-align="center"}
 
-## Results and Conclusion
+Model 1 has an R² of 0.5654, model 2 has an R² of 0.8326, and model 3 has an R² of 0.8307. Overall, this shows that most of the models are generally robust. However, models 2 and 3 have the highest explanatory powers. The data analysis concludes that foreign aid does not significantly impact economic development. As per the predictions, factors such as corruption and education impact indicators of economic development. The data shows that foreign aid has a neutral and potentially negative influence on the indicators of financial assistance.	
+
+The results from the research concluded that foreign aid did not have a significant impact on economic development in developing countries. Development was measured through 3 different variables: GDP growth, infant mortality rate, and the poverty rate. The main limitation of the research was that the data had multicollinearity; this means that a fixed effects regression could not be used to interpret the data. As a result, the analysis does not account for the variation in the data across time. The data also needed a lot of observations. Overall, if this research were conducted again, a better dataset would have to be used, and some variables would have to be composited to avoid multicollinearity. The residual analysis, which was conducted using QQ plots, Residual vs. Fitted plots, showed that all of the models were linear, with only a couple of outliers. This indicates that all 3 of the models were a good fit (the code for this is included in the code appendix).
+
+## References
+
+Tailwind. (2025). \*Image alt text generator\*. https://www.tailwindapp.com/marketing/tools/image-alt-text-generator
+
+Khan, M. A., & Ahmed, A. (2007). Foreign aid: Blessing or curse? Evidence from Pakistan. \*The Pakistan Development Review, 46\*(3), 215--240. https://doi.org/10.2307/41261157
+
+Rotarou, E., & Ueta, K. (2009). Foreign aid and economic development: Tanzania's experience with ODA. \*The Kyoto Economic Review, 78\*(2), 157--189. http://www.jstor.org/stable/43215829
+
+Williamson, C. R. (2008). Foreign aid and human development: The impact of foreign aid to the health sector. \*Southern Economic Journal, 75\*(1), 188--207. https://doi.org/10.2307/20112034
+
+World Bank. (2025). \*World development indicators\*. https://databank.worldbank.org/source/world-development-indicators
 
 ## Author Contribution
 
@@ -38,7 +76,7 @@ Rimjhim Mitra did everything.
 
 ## Code Appendix
 
-```{r}
+```{r codeAppend, ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE, tidy=TRUE}
 ### LOAD AND FORMAT DATA
 #load libraries
 
@@ -131,9 +169,15 @@ sub_data <- sub_data %>%
   ungroup()  
 
 ### EXPLORATORY DATA ANALYSIS
+#Business Score
+ggplot(sub_data, aes(x = sub_data$`Ease of doing business score (0 = lowest performance to 100 = best performance)`)) +
+  geom_histogram(fill = "deeppink", color = "black") +
+  labs(title = "Ease of Doing Business Score Histogram", x="Ease of Doing Business Score (0-100)", y="Count")
+
+#Gini Index
 ggplot(sub_data, aes(x = sub_data$`Gini index`)) +
   geom_histogram(fill = "deeppink", color = "black", bins = 5) +
-  labs(title = "Gini Index Histogram", x="Gini Index", y="Count")
+  labs(title = "Gini Index Histogram", x="Gini Index (0-100)", y="Count")
 
 ### REGRESSION MODELS
 # MODEL 1 (Perform regression analysis with all available variables as controls)
@@ -190,5 +234,3 @@ stargazer(model1, model2, model3, type = "text")
 
 
 ```
-
-## References
